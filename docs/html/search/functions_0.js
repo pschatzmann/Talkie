@@ -1,10 +1,11 @@
 var searchData=
 [
-  ['say_9',['say',['../classTalkie.html#a11e3b6af45774ba1ed3c25428d086734',1,'Talkie']]],
-  ['saynumber_10',['sayNumber',['../classTalkie.html#aac84c75c3cc49ddc52cc25f8d285570b',1,'Talkie']]],
-  ['setchannels_11',['setChannels',['../classTalkie.html#a49df9d8f310eee05dd79733d5d597240',1,'Talkie']]],
-  ['setdatacallback_12',['setDataCallback',['../classTalkie.html#a085018a7ab7f1098c62fc474e62aa788',1,'Talkie']]],
-  ['setoutput_13',['setOutput',['../classTalkie.html#a51f4bf215aedd9c10529979852f8bf81',1,'Talkie']]],
-  ['setoutputastext_14',['setOutputAsText',['../classTalkie.html#a81e77ae4a16af2bf36ec3002d41c67cd',1,'Talkie']]],
-  ['silence_15',['silence',['../classTalkie.html#aaf35c9154db25be0e82cf3f70388fd83',1,'Talkie']]]
+  ['say_10',['say',['../classTalkiePCM.html#a91abcac841596bc8015a93f3d30f93ff',1,'TalkiePCM']]],
+  ['saynumber_11',['sayNumber',['../classTalkiePCM.html#ae657496955b354ad563fc5f62cc29bc5',1,'TalkiePCM']]],
+  ['setchannels_12',['setChannels',['../classTalkiePCM.html#ab746c5cbb3cdb78e8a0c685f447567c8',1,'TalkiePCM']]],
+  ['setdatacallback_13',['setDataCallback',['../classTalkiePCM.html#a545fb0d7989081e7b60ff09280406b5c',1,'TalkiePCM']]],
+  ['setoutput_14',['setOutput',['../classTalkiePCM.html#a1abd922b1e376628825d6c66193ea04c',1,'TalkiePCM']]],
+  ['setoutputastext_15',['setOutputAsText',['../classTalkiePCM.html#a8b8f0916e442d0fee466cc7d34c1dde6',1,'TalkiePCM']]],
+  ['setvolume_16',['setVolume',['../classTalkiePCM.html#af1af6ade1b0597726389bdfb7498ba88',1,'TalkiePCM']]],
+  ['silence_17',['silence',['../classTalkiePCM.html#a2c161d46032df11897912ea7aa09a3b5',1,'TalkiePCM']]]
 ];

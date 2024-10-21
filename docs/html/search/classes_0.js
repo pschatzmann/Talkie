@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['talkie_8',['Talkie',['../classTalkie.html',1,'']]]
+  ['talkiepcm_9',['TalkiePCM',['../classTalkiePCM.html',1,'']]]
 ];
