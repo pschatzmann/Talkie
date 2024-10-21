@@ -6,6 +6,8 @@ I converted the original [Talkie TTS library](https://github.com/going-digital/T
 In the constructor you can define, how many channels to generate. The bits per sample
 is 16 and the sample rate is 8000 samples per second.
 
+### What is Talkie
+
 It is a software implementation of the Texas Instruments speech synthesis architecture (Linear Predictive Coding) from the late 1970s / early 1980s, as used on several popular applications:
 
 - Texas Instruments Speak & Spell family of educational products
