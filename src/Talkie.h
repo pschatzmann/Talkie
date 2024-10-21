@@ -5,8 +5,9 @@
 #pragma once
 
 #include <inttypes.h>
-
+#ifdef ARDUINO
 #include "Print.h"
+#endif
 #include "Vocab_Special.h"
 #include "Vocab_US_Large.h"
 
@@ -23,11 +24,13 @@
 
 class Talkie {
  public:
+  Talkie() = default;
+#ifdef ARDUINO
   Talkie(Print& out, int channelCount = 1) {
-    p_print = &out;
+    setOutput(out);
     channels = channelCount;
   }
-
+#endif
   /// converts samples to csv string format
   void setOutputAsText(bool flag) { isOutputText = flag; }
 
@@ -65,7 +68,7 @@ class Talkie {
     say(sp2_OUT);
   }
 
-  /// say any number between -999,999 and 999,999 
+  /// say any number between -999,999 and 999,999
   void sayNumber(long aNumber) {
     if (aNumber < 0) {
       say(sp2_MINUS);
@@ -232,9 +235,28 @@ class Talkie {
     }
   }
 
+#ifdef ARDUINO
+ /// Defines the Arduino data target
+  void setOutput(Print &out){
+    p_print = &out;
+  }
+#endif
+
+  /// Defines the data callback that receives the generated samples
+  void setDataCallback(void (*cb)(int16_t* data, int len)) {
+    data_callback = cb;
+  }
+
+  /// Defines the number of generated output channels (2=stereo). Default is 1 = mono.
+  void setChannels(uint16_t ch){
+    channels = ch;
+  }
+
  protected:
+#ifdef ARDUINO
   Print* p_print = nullptr;
-  uint16_t channels;
+#endif
+  uint16_t channels = 1;
   bool isInit = false;
   bool isOutputText = true;
   const uint8_t* ptrAddr = nullptr;
@@ -244,6 +266,7 @@ class Talkie {
   int16_t synthK1, synthK2;
   int8_t synthK3, synthK4, synthK5, synthK6, synthK7, synthK8, synthK9,
       synthK10;
+  void (*data_callback)(int16_t* data, int len) = nullptr;
 
   uint8_t tmsEnergy[0x10] = {0x00, 0x02, 0x03, 0x04, 0x05, 0x07, 0x0a, 0x0f,
                              0x14, 0x20, 0x29, 0x39, 0x51, 0x72, 0xa1, 0xff};
@@ -340,19 +363,30 @@ class Talkie {
   }
 
   void writeSample(int16_t sample) {
-    if (p_print == nullptr) return;
     // 12 bit to 16 bits;
     int16_t outSample = clip(static_cast<int>(sample), -32768, 32767);
-    if (isOutputText) {
-      for (int j = 0; j < channels; j++) {
-        if (j > 0) p_print->print(", ");
-        p_print->print(outSample);
-      }
-      p_print->println();
-    } else {
+
+    // provide data via callback
+    if (data_callback){
       int16_t out[channels] = {outSample};
-      p_print->write((uint8_t*)out, sizeof(out));
+      data_callback(out, channels);
     }
+
+#ifdef ARDUINO
+    // provide data to Arduino Print
+    if (p_print) {;
+      if (isOutputText) {
+        for (int j = 0; j < channels; j++) {
+          if (j > 0) p_print->print(", ");
+          p_print->print(outSample);
+        }
+        p_print->println();
+      } else {
+        int16_t out[channels] = {outSample};
+        p_print->write((uint8_t*)out, sizeof(out));
+      }
+    }
+#endif
   }
 
   bool process() {

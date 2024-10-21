@@ -1,7 +1,7 @@
 
 # Talkie: Platform Independent Speech library for Arduino
 
-I converted the original [Talkie TTS library](https://github.com/going-digital/Talkie) into a platform independed header only library by removing all platform dependent code. I am just generating __PCM data__ for an indicated __Arduino Print__ output.
+I converted the original [Talkie TTS library](https://github.com/going-digital/Talkie) into a platform independed header only library by removing all platform dependent code. I am just generating __PCM data__ for an indicated __Arduino Print__ output or callback.
 
 In the constructor you can define, how many channels to generate. The bits per sample
 is 16 and the sample rate is 8000 samples per second.

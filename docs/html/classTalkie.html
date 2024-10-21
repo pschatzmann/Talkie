@@ -115,6 +115,18 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:aa3464cd755861be16feb4e17099b888b"><td class="memItemLeft" align="right" valign="top"><a id="aa3464cd755861be16feb4e17099b888b"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>sayFloat</b> (float aFloat, int aDecimalPlaces, bool aSuppressLeadingZero, bool aSuppressTrailingZero)</td></tr>
 <tr class="separator:aa3464cd755861be16feb4e17099b888b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51f4bf215aedd9c10529979852f8bf81"><td class="memItemLeft" align="right" valign="top"><a id="a51f4bf215aedd9c10529979852f8bf81"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTalkie.html#a51f4bf215aedd9c10529979852f8bf81">setOutput</a> (Print &amp;out)</td></tr>
+<tr class="memdesc:a51f4bf215aedd9c10529979852f8bf81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the Arduino data target. <br /></td></tr>
+<tr class="separator:a51f4bf215aedd9c10529979852f8bf81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a085018a7ab7f1098c62fc474e62aa788"><td class="memItemLeft" align="right" valign="top"><a id="a085018a7ab7f1098c62fc474e62aa788"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTalkie.html#a085018a7ab7f1098c62fc474e62aa788">setDataCallback</a> (void(*cb)(int16_t *data, int len))</td></tr>
+<tr class="memdesc:a085018a7ab7f1098c62fc474e62aa788"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the data callback that receives the generated samples. <br /></td></tr>
+<tr class="separator:a085018a7ab7f1098c62fc474e62aa788"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49df9d8f310eee05dd79733d5d597240"><td class="memItemLeft" align="right" valign="top"><a id="a49df9d8f310eee05dd79733d5d597240"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTalkie.html#a49df9d8f310eee05dd79733d5d597240">setChannels</a> (uint16_t ch)</td></tr>
+<tr class="memdesc:a49df9d8f310eee05dd79733d5d597240"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the number of generated output channels (2=stereo). Default is 1 = mono. <br /></td></tr>
+<tr class="separator:a49df9d8f310eee05dd79733d5d597240"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -152,7 +164,7 @@ Protected Attributes</h2></td></tr>
 Print *&#160;</td><td class="memItemRight" valign="bottom"><b>p_print</b> = nullptr</td></tr>
 <tr class="separator:aae1e7e3924428b598e8fe0b7f7d974c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f47b9ed6642dcb67557ef1d22a4a05e"><td class="memItemLeft" align="right" valign="top"><a id="a1f47b9ed6642dcb67557ef1d22a4a05e"></a>
-uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>channels</b></td></tr>
+uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>channels</b> = 1</td></tr>
 <tr class="separator:a1f47b9ed6642dcb67557ef1d22a4a05e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6e238525556d7a3a578637ea8a3109ae"><td class="memItemLeft" align="right" valign="top"><a id="a6e238525556d7a3a578637ea8a3109ae"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>isInit</b> = false</td></tr>
@@ -202,6 +214,9 @@ int8_t&#160;</td><td class="memItemRight" valign="bottom"><b>synthK9</b></td></t
 <tr class="memitem:a9231ecb784d979cf688b42f8fbda8091"><td class="memItemLeft" align="right" valign="top"><a id="a9231ecb784d979cf688b42f8fbda8091"></a>
 int8_t&#160;</td><td class="memItemRight" valign="bottom"><b>synthK10</b></td></tr>
 <tr class="separator:a9231ecb784d979cf688b42f8fbda8091"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad08521ca4dfd869ec977854d1aa2e4d6"><td class="memItemLeft" align="right" valign="top"><a id="ad08521ca4dfd869ec977854d1aa2e4d6"></a>
+void(*&#160;</td><td class="memItemRight" valign="bottom"><b>data_callback</b> )(int16_t *data, int len) = nullptr</td></tr>
+<tr class="separator:ad08521ca4dfd869ec977854d1aa2e4d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab34acb307f7fa81cebee84ba58f7bd26"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>tmsEnergy</b> [0x10]</td></tr>
 <tr class="separator:ab34acb307f7fa81cebee84ba58f7bd26"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2733f78bce4f6f2c5f0b0f9b137f8b5b"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>tmsPeriod</b> [0x40]</td></tr>
