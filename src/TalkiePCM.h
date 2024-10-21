@@ -22,11 +22,11 @@
  *  @author Peter Knight, Phil Schatzmann
  */
 
-class Talkie {
+class TalkiePCM {
  public:
-  Talkie() = default;
+  TalkiePCM() = default;
 #ifdef ARDUINO
-  Talkie(Print& out, int channelCount = 1) {
+  TalkiePCM(Print& out, int channelCount = 1) {
     setOutput(out);
     channels = channelCount;
   }
@@ -252,13 +252,17 @@ class Talkie {
     channels = ch;
   }
 
+  /// Volume factor: > 1.0f means amplify; < 1.0f means lower volume. Default is 1.0f
+  void setVolume(float vol){
+    volume = vol;
+  }
+
  protected:
 #ifdef ARDUINO
   Print* p_print = nullptr;
 #endif
   uint16_t channels = 1;
-  bool isInit = false;
-  bool isOutputText = true;
+  bool isOutputText = false;
   const uint8_t* ptrAddr = nullptr;
   uint8_t ptrBit;
   uint8_t synthPeriod;
@@ -266,6 +270,7 @@ class Talkie {
   int16_t synthK1, synthK2;
   int8_t synthK3, synthK4, synthK5, synthK6, synthK7, synthK8, synthK9,
       synthK10;
+  float volume = 1.0f;
   void (*data_callback)(int16_t* data, int len) = nullptr;
 
   uint8_t tmsEnergy[0x10] = {0x00, 0x02, 0x03, 0x04, 0x05, 0x07, 0x0a, 0x0f,
@@ -330,6 +335,8 @@ class Talkie {
   }
 
   uint8_t getBits(uint8_t bits) {
+    // prevent NPE
+    if (ptrAddr==nullptr) return 0;
     uint8_t value;
     uint16_t data;
     data = rev(*(ptrAddr)) << 8;
@@ -348,11 +355,6 @@ class Talkie {
 
   void say1(const uint8_t* addr) {
     uint8_t energy = 0;
-    if (!isInit) {
-      for (int j = 0; j < 100; j++) wait();
-      isInit = true;
-    }
-
     setPtr(addr);
   }
 
@@ -363,12 +365,17 @@ class Talkie {
   }
 
   void writeSample(int16_t sample) {
-    // 12 bit to 16 bits;
-    int16_t outSample = clip(static_cast<int>(sample), -32768, 32767);
+    // scale to 16 bits;
+    int16_t outSample;
+    if (volume == 1.0f) 
+      outSample = sample; //clip(static_cast<int>(sample) << 6, -32768, 32767);
+    else 
+      outSample = clip(volume*sample, -32768, 32767); //clip(volume * (static_cast<int>(sample) << 6), -32768, 32767);
 
     // provide data via callback
     if (data_callback){
-      int16_t out[channels] = {outSample};
+      int16_t out[channels] = {0};
+      for (int j=0;j<channels;j++) out[j]=outSample;
       data_callback(out, channels);
     }
 
@@ -382,8 +389,9 @@ class Talkie {
         }
         p_print->println();
       } else {
-        int16_t out[channels] = {outSample};
-        p_print->write((uint8_t*)out, sizeof(out));
+        int16_t out[channels] = {0};
+        for (int j=0;j<channels;j++) out[j] = outSample;
+        p_print->write((uint8_t*)&(out[0]), sizeof(out));
       }
     }
 #endif
