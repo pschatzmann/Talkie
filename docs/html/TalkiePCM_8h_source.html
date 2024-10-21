@@ -442,7 +442,7 @@ $(function() {
 <div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;  }</div>
 <div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160; </div>
-<div class="line"><a name="l00401"></a><span class="lineno"><a class="line" href="classTalkiePCM.html#a087ac706772c36afc830df53aea3bb1f">  401</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classTalkiePCM.html#a087ac706772c36afc830df53aea3bb1f">processEnergy</a>(uint16_t synthEnergy) {</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;  <span class="keywordtype">void</span> processEnergy(uint16_t synthEnergy) {</div>
 <div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;    int16_t u[11] = {0};</div>
 <div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160; </div>
 <div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;    <span class="comment">// original logic: update pwm</span></div>
@@ -544,12 +544,11 @@ $(function() {
 <div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;      }</div>
 <div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;      <span class="comment">// original logic: delay 25 ms (=40 hz) -&gt; 8000 hz / 40 hz = 200 cycles</span></div>
 <div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j=0;j&lt;200;j++)</div>
-<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;        <a class="code" href="classTalkiePCM.html#a087ac706772c36afc830df53aea3bb1f">processEnergy</a>(synthEnergy);</div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;        processEnergy(synthEnergy);</div>
 <div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;    } <span class="keywordflow">while</span> (energy != 0xf);</div>
 <div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;  }</div>
 <div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;};</div>
 <div class="ttc" id="aclassTalkiePCM_html"><div class="ttname"><a href="classTalkiePCM.html">TalkiePCM</a></div><div class="ttdoc">Talkie is a software implementation of the Texas Instruments speech synthesis architecture (Linear Pr...</div><div class="ttdef"><b>Definition:</b> TalkiePCM.h:25</div></div>
-<div class="ttc" id="aclassTalkiePCM_html_a087ac706772c36afc830df53aea3bb1f"><div class="ttname"><a href="classTalkiePCM.html#a087ac706772c36afc830df53aea3bb1f">TalkiePCM::processEnergy</a></div><div class="ttdeci">void processEnergy(uint16_t synthEnergy)</div><div class="ttdef"><b>Definition:</b> TalkiePCM.h:401</div></div>
 <div class="ttc" id="aclassTalkiePCM_html_a1abd922b1e376628825d6c66193ea04c"><div class="ttname"><a href="classTalkiePCM.html#a1abd922b1e376628825d6c66193ea04c">TalkiePCM::setOutput</a></div><div class="ttdeci">void setOutput(Print &amp;out)</div><div class="ttdoc">Defines the Arduino data target.</div><div class="ttdef"><b>Definition:</b> TalkiePCM.h:240</div></div>
 <div class="ttc" id="aclassTalkiePCM_html_a2c161d46032df11897912ea7aa09a3b5"><div class="ttname"><a href="classTalkiePCM.html#a2c161d46032df11897912ea7aa09a3b5">TalkiePCM::silence</a></div><div class="ttdeci">void silence(uint16_t ms)</div><div class="ttdoc">outputs silence for the indicated milliseconds</div><div class="ttdef"><b>Definition:</b> TalkiePCM.h:44</div></div>
 <div class="ttc" id="aclassTalkiePCM_html_a545fb0d7989081e7b60ff09280406b5c"><div class="ttname"><a href="classTalkiePCM.html#a545fb0d7989081e7b60ff09280406b5c">TalkiePCM::setDataCallback</a></div><div class="ttdeci">void setDataCallback(void(*cb)(int16_t *data, int len))</div><div class="ttdoc">Defines the data callback that receives the generated samples.</div><div class="ttdef"><b>Definition:</b> TalkiePCM.h:244</div></div>
