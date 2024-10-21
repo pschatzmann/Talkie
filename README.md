@@ -6,7 +6,27 @@ I converted the original [Talkie TTS library](https://github.com/going-digital/T
 In the constructor you can define, how many channels to generate. The bits per sample
 is 16 and the sample rate is 8000 samples per second.
 
-Talkie is simulating the Texas Instruments LPC Speech Chip TMS5220. A good explanation of the TMS5220 operation and the LPC frame format can be found [here](https://github.com/mamedev/mame/blob/master/src/devices/sound/tms5220.txt).
+It is a software implementation of the Texas Instruments speech synthesis architecture (Linear Predictive Coding) from the late 1970s / early 1980s, as used on several popular applications:
+
+- Texas Instruments Speak & Spell family of educational products
+- Texas Instruments TI-99/4A Speech System expansion
+- Acorn BBC Micro Speech Synthesiser expansion
+- Atari arcade games (eg. Star Wars series, Indiana Jones, Gauntlet)
+Apple ][ Echo 2
+- IBM PS/2 Speech Adapter
+
+## Words
+
+Talkie comes with over 1000 words of speech data that can be included in your projects. Most words only take a fraction of a KB, so you can add plenty.
+
+- [Vocab_AstroBlaster](src/Vocab_AstroBlaster.h)
+- [Vocab_Soundbites](src/Vocab_Soundbites.h)
+- [Vocab_Special](src/Vocab_Special.h)
+- [Vocab_Toms_Diner](src/Vocab_Toms_Diner.h)
+- [Vocab_US_Acorn](src/Vocab_US_Acorn.h)
+- [Vocab_US_Clock](src/Vocab_US_Clock.h)
+- [Vocab_US_Large](src/Vocab_US_Large.h)
+- [Talkie](Talkie/src/Vocab_US_TI99.h)
 
 ## Output Libraries
 

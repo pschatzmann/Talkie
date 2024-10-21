@@ -1,14 +1,25 @@
+// Talkie library
+// Copyright 2011 Peter Knight
+// This code is released under GPLv2 license.
+
 #pragma once
 
 #include <inttypes.h>
+
 #include "Print.h"
 #include "Vocab_Special.h"
 #include "Vocab_US_Large.h"
 
-
 #define CHIRP_SIZE 41
 #define FS 8000  // Speech engine sample rate
 #define LENGT_OF_FLOAT_STRING 14
+
+/**
+ * @brief Talkie is a software implementation of the Texas Instruments speech
+ * synthesis architecture (Linear Predictive Coding) from the late 1970s.
+ *
+ *  @author Peter Knight, Phil Schatzmann
+ */
 
 class Talkie {
  public:
@@ -18,15 +29,15 @@ class Talkie {
   }
 
   /// converts samples to csv string format
-  void setOutputAsText(bool flag){
-    isOutputText = flag;
-  }
-  
+  void setOutputAsText(bool flag) { isOutputText = flag; }
+
+  /// converts the provided word into samples
   void say(const uint8_t* address) {
     say1(address);
     wait();
   }
 
+  /// outputs silence for the indicated milliseconds
   void silence(uint16_t ms) {
     int samples = 8000 * ms / 1000;
     for (int j = 0; j < samples; j++) {
@@ -54,7 +65,7 @@ class Talkie {
     say(sp2_OUT);
   }
 
-  /* say any number between -999,999 and 999,999 */
+  /// say any number between -999,999 and 999,999 
   void sayNumber(long aNumber) {
     if (aNumber < 0) {
       say(sp2_MINUS);
@@ -329,17 +340,17 @@ class Talkie {
   }
 
   void writeSample(int16_t sample) {
-    if (p_print==nullptr) return;
+    if (p_print == nullptr) return;
     // 12 bit to 16 bits;
     int16_t outSample = clip(static_cast<int>(sample), -32768, 32767);
     if (isOutputText) {
-      for (int j=0;j<channels;j++)  {
-        if (j>0) p_print->print(", ");
+      for (int j = 0; j < channels; j++) {
+        if (j > 0) p_print->print(", ");
         p_print->print(outSample);
       }
       p_print->println();
     } else {
-      int16_t out[channels] = {outSample};  
+      int16_t out[channels] = {outSample};
       p_print->write((uint8_t*)out, sizeof(out));
     }
   }
