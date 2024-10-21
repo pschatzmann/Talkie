@@ -12,7 +12,7 @@ It is a software implementation of the Texas Instruments speech synthesis archit
 - Texas Instruments TI-99/4A Speech System expansion
 - Acorn BBC Micro Speech Synthesiser expansion
 - Atari arcade games (eg. Star Wars series, Indiana Jones, Gauntlet)
-Apple ][ Echo 2
+- Apple Echo 2
 - IBM PS/2 Speech Adapter
 
 ## Words
@@ -36,7 +36,7 @@ You have most options however by using the [Arduino Audio Tools](https://github.
 
 ## Class Documentaion
 
-- [Talkie](https://pschatzmann.github.io/Talkie/html/classTalkie.html)
+- [Talkie](https://pschatzmann.github.io/TalkiePCM/html/classTalkiePCM.html)
 
 
 ## Installation
