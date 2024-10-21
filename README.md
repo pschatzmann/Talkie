@@ -34,6 +34,11 @@ You can e.g. write the data directly to a File or to I2S if your processor is su
 
 You have most options however by using the [Arduino Audio Tools](https://github.com/pschatzmann/arduino-audio-tools), where you can reprocess the audio data or output it via different means.
 
+## Class Documentaion
+
+- [Talkie](https://pschatzmann.github.io/Talkie/html/classTalkie.html)
+
+
 ## Installation
 
 You can download the library as zip and call include Library -> zip library. Or you can git clone this project into the Arduino libraries folder e.g. with
