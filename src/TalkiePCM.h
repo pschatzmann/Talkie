@@ -498,7 +498,7 @@ class TalkiePCM {
           }
         }
       }
-      // original logic: delay 25 (=40 hz) -> 8000 hz / 40 hz = 200 cycles
+      // original logic: delay 25 ms (=40 hz) -> 8000 hz / 40 hz = 200 cycles
       for (int j=0;j<200;j++)
         processEnergy(synthEnergy);
     } while (energy != 0xf);
