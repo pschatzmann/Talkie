@@ -6,7 +6,7 @@ I converted the original [Talkie TTS library](https://github.com/going-digital/T
 In the constructor you can define, how many channels to generate. The bits per sample
 is 16 and the sample rate is 8000 samples per second.
 
-### What is Talkie
+## What is Talkie
 
 It is a software implementation of the Texas Instruments speech synthesis architecture (Linear Predictive Coding) from the late 1970s / early 1980s, as used on several popular applications:
 
@@ -32,9 +32,9 @@ Talkie comes with over 1000 words of speech data that can be included in your pr
 
 ## Output Libraries
 
-You can e.g. write the data directly to a File or to I2S if your processor is supporting a corresponding API. 
+You can e.g. write the data directly to Serial, a File or to I2S if your processor is supporting a corresponding API. 
 
-You have most options however by using the [Arduino Audio Tools](https://github.com/pschatzmann/arduino-audio-tools), where you can reprocess the audio data or output it via different means.
+I recommend to use it with the [Arduino Audio Tools](https://github.com/pschatzmann/arduino-audio-tools), where you can reprocess the audio data and/or output it via different protocols.
 
 ## Class Documentaion
 
