@@ -36,7 +36,7 @@ You have most options however by using the [Arduino Audio Tools](https://github.
 
 ## Class Documentaion
 
-- [Talkie](https://pschatzmann.github.io/TalkiePCM/html/classTalkiePCM.html)
+- [TalkiePCM](https://pschatzmann.github.io/TalkiePCM/html/classTalkiePCM.html)
 
 
 ## Installation

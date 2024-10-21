@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Talkie: TalkiePCM Class Reference</title>
+<title>TalkiePCM: TalkiePCM Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Talkie
+   <div id="projectname">TalkiePCM
    </div>
   </td>
  </tr>
@@ -123,13 +123,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTalkiePCM.html#a545fb0d7989081e7b60ff09280406b5c">setDataCallback</a> (void(*cb)(int16_t *data, int len))</td></tr>
 <tr class="memdesc:a545fb0d7989081e7b60ff09280406b5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the data callback that receives the generated samples. <br /></td></tr>
 <tr class="separator:a545fb0d7989081e7b60ff09280406b5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab746c5cbb3cdb78e8a0c685f447567c8"><td class="memItemLeft" align="right" valign="top"><a id="ab746c5cbb3cdb78e8a0c685f447567c8"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTalkiePCM.html#ab746c5cbb3cdb78e8a0c685f447567c8">setChannels</a> (uint16_t ch)</td></tr>
-<tr class="memdesc:ab746c5cbb3cdb78e8a0c685f447567c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the number of generated output channels (2=stereo). Default is 1 = mono. <br /></td></tr>
+<tr class="memitem:ab746c5cbb3cdb78e8a0c685f447567c8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTalkiePCM.html#ab746c5cbb3cdb78e8a0c685f447567c8">setChannels</a> (uint16_t ch)</td></tr>
 <tr class="separator:ab746c5cbb3cdb78e8a0c685f447567c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af1af6ade1b0597726389bdfb7498ba88"><td class="memItemLeft" align="right" valign="top"><a id="af1af6ade1b0597726389bdfb7498ba88"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTalkiePCM.html#af1af6ade1b0597726389bdfb7498ba88">setVolume</a> (float vol)</td></tr>
-<tr class="memdesc:af1af6ade1b0597726389bdfb7498ba88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Volume factor: &gt; 1.0f means amplify; &lt; 1.0f means lower volume. Default is 1.0f. <br /></td></tr>
+<tr class="memitem:af1af6ade1b0597726389bdfb7498ba88"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTalkiePCM.html#af1af6ade1b0597726389bdfb7498ba88">setVolume</a> (float vol)</td></tr>
 <tr class="separator:af1af6ade1b0597726389bdfb7498ba88"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
@@ -146,21 +142,17 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>rev</b> (uint8_t a
 <tr class="memitem:a58bff7a843bb324fe9525edbd37cfda3"><td class="memItemLeft" align="right" valign="top"><a id="a58bff7a843bb324fe9525edbd37cfda3"></a>
 uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>getBits</b> (uint8_t bits)</td></tr>
 <tr class="separator:a58bff7a843bb324fe9525edbd37cfda3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab326beaf1391ffb1dbca1f8ec1d22718"><td class="memItemLeft" align="right" valign="top"><a id="ab326beaf1391ffb1dbca1f8ec1d22718"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>say1</b> (const uint8_t *addr)</td></tr>
-<tr class="separator:ab326beaf1391ffb1dbca1f8ec1d22718"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae03ed695d56f2532a0f237af0b778b60"><td class="memItemLeft" align="right" valign="top"><a id="ae03ed695d56f2532a0f237af0b778b60"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>clip</b> (int value, int min, int max)</td></tr>
 <tr class="separator:ae03ed695d56f2532a0f237af0b778b60"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b34cf6c4a5dfd14ea187d894c34f380"><td class="memItemLeft" align="right" valign="top"><a id="a4b34cf6c4a5dfd14ea187d894c34f380"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>writeSample</b> (int16_t sample)</td></tr>
 <tr class="separator:a4b34cf6c4a5dfd14ea187d894c34f380"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afa7d0eda5bcddf451bfdce28bcbedf7d"><td class="memItemLeft" align="right" valign="top"><a id="afa7d0eda5bcddf451bfdce28bcbedf7d"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>process</b> ()</td></tr>
-<tr class="separator:afa7d0eda5bcddf451bfdce28bcbedf7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae8de2ae2fddc95292b0a049f5cee8b72"><td class="memItemLeft" align="right" valign="top"><a id="ae8de2ae2fddc95292b0a049f5cee8b72"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>calculateSample</b> ()</td></tr>
-<tr class="separator:ae8de2ae2fddc95292b0a049f5cee8b72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a087ac706772c36afc830df53aea3bb1f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTalkiePCM.html#a087ac706772c36afc830df53aea3bb1f">processEnergy</a> (uint16_t synthEnergy)</td></tr>
+<tr class="separator:a087ac706772c36afc830df53aea3bb1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a357b1af29a8181a5f55212bc2b977a1b"><td class="memItemLeft" align="right" valign="top"><a id="a357b1af29a8181a5f55212bc2b977a1b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>calculateSamples</b> ()</td></tr>
+<tr class="separator:a357b1af29a8181a5f55212bc2b977a1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -182,9 +174,6 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>ptrBit</b></td></t
 <tr class="memitem:a34bd5d8877b2a41c4376a1ebcdef32e9"><td class="memItemLeft" align="right" valign="top"><a id="a34bd5d8877b2a41c4376a1ebcdef32e9"></a>
 uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>synthPeriod</b></td></tr>
 <tr class="separator:a34bd5d8877b2a41c4376a1ebcdef32e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7aa751079d4209e28a3b80b9627f96a2"><td class="memItemLeft" align="right" valign="top"><a id="a7aa751079d4209e28a3b80b9627f96a2"></a>
-uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>synthEnergy</b></td></tr>
-<tr class="separator:a7aa751079d4209e28a3b80b9627f96a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab0c1a1ce82f7e847f666af409ee5b58e"><td class="memItemLeft" align="right" valign="top"><a id="ab0c1a1ce82f7e847f666af409ee5b58e"></a>
 int16_t&#160;</td><td class="memItemRight" valign="bottom"><b>synthK1</b></td></tr>
 <tr class="separator:ab0c1a1ce82f7e847f666af409ee5b58e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -263,7 +252,90 @@ int16_t&#160;</td><td class="memItemRight" valign="bottom"><b>x</b> [10] = {0}</
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Talkie is a software implementation of the Texas Instruments speech synthesis architecture (Linear Predictive Coding) from the late 1970s. </p>
 <dl class="section author"><dt>Author</dt><dd>Peter Knight, Phil Schatzmann </dd></dl>
-</div><h2 class="groupheader">Member Data Documentation</h2>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a087ac706772c36afc830df53aea3bb1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a087ac706772c36afc830df53aea3bb1f">&#9670;&nbsp;</a></span>processEnergy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TalkiePCM::processEnergy </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>synthEnergy</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>In the original implementation the processEnergy logic was executed with the help of a timer interrupt. The say method was generating the sample values in parallel by updating the synthEnergy value with the logic find in the calculateSamples method.</p>
+<p>We drive the process by calling calculateSample() which itself executes the process logic. </p>
+
+</div>
+</div>
+<a id="ab746c5cbb3cdb78e8a0c685f447567c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab746c5cbb3cdb78e8a0c685f447567c8">&#9670;&nbsp;</a></span>setChannels()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TalkiePCM::setChannels </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>ch</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Defines the number of generated output channels (2=stereo). Default is 1 = mono. </p>
+
+</div>
+</div>
+<a id="af1af6ade1b0597726389bdfb7498ba88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1af6ade1b0597726389bdfb7498ba88">&#9670;&nbsp;</a></span>setVolume()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TalkiePCM::setVolume </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>vol</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Volume factor: &gt; 1.0f means amplify; &lt; 1.0f means lower volume. Default is 1.0f </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
 <a id="a281f659e0aaa01cd4fbc060cf628c182"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a281f659e0aaa01cd4fbc060cf628c182">&#9670;&nbsp;</a></span>chirp</h2>
 

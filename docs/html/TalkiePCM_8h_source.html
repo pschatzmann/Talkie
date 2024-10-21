@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Talkie: src/TalkiePCM.h Source File</title>
+<title>TalkiePCM: src/TalkiePCM.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Talkie
+   <div id="projectname">TalkiePCM
    </div>
   </td>
  </tr>
@@ -98,7 +98,7 @@ $(function() {
 <div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="classTalkiePCM.html#a8b8f0916e442d0fee466cc7d34c1dde6">   35</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classTalkiePCM.html#a8b8f0916e442d0fee466cc7d34c1dde6">setOutputAsText</a>(<span class="keywordtype">bool</span> flag) { isOutputText = flag; }</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
 <div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="classTalkiePCM.html#a91abcac841596bc8015a93f3d30f93ff">   38</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classTalkiePCM.html#a91abcac841596bc8015a93f3d30f93ff">say</a>(<span class="keyword">const</span> uint8_t* address) {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    say1(address);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    setPtr(address);</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    wait();</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  }</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
@@ -296,168 +296,156 @@ $(function() {
 <div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;  }</div>
 <div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160; </div>
 <div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;<span class="preprocessor">#ifdef ARDUINO</span></div>
-<div class="line"><a name="l00240"></a><span class="lineno"><a class="line" href="classTalkiePCM.html#a1abd922b1e376628825d6c66193ea04c">  240</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classTalkiePCM.html#a1abd922b1e376628825d6c66193ea04c">setOutput</a>(Print &amp;out){</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    p_print = &amp;out;</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;  }</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160; </div>
-<div class="line"><a name="l00246"></a><span class="lineno"><a class="line" href="classTalkiePCM.html#a545fb0d7989081e7b60ff09280406b5c">  246</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classTalkiePCM.html#a545fb0d7989081e7b60ff09280406b5c">setDataCallback</a>(<span class="keywordtype">void</span> (*cb)(int16_t* data, <span class="keywordtype">int</span> len)) {</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    data_callback = cb;</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;  }</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160; </div>
-<div class="line"><a name="l00251"></a><span class="lineno"><a class="line" href="classTalkiePCM.html#ab746c5cbb3cdb78e8a0c685f447567c8">  251</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classTalkiePCM.html#ab746c5cbb3cdb78e8a0c685f447567c8">setChannels</a>(uint16_t ch){</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    channels = ch;</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;  }</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160; </div>
-<div class="line"><a name="l00256"></a><span class="lineno"><a class="line" href="classTalkiePCM.html#af1af6ade1b0597726389bdfb7498ba88">  256</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classTalkiePCM.html#af1af6ade1b0597726389bdfb7498ba88">setVolume</a>(<span class="keywordtype">float</span> vol){</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    volume = vol;</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;  }</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160; </div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160; <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;<span class="preprocessor">#ifdef ARDUINO</span></div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;  Print* p_print = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;  uint16_t channels = 1;</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;  <span class="keywordtype">bool</span> isOutputText = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;  <span class="keyword">const</span> uint8_t* ptrAddr = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;  uint8_t ptrBit;</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;  uint8_t synthPeriod;</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;  uint16_t synthEnergy;</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;  int16_t synthK1, synthK2;</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;  int8_t synthK3, synthK4, synthK5, synthK6, synthK7, synthK8, synthK9,</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;      synthK10;</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;  <span class="keywordtype">float</span> volume = 1.0f;</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;  void (*data_callback)(int16_t* data, <span class="keywordtype">int</span> len) = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160; </div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;  uint8_t tmsEnergy[0x10] = {0x00, 0x02, 0x03, 0x04, 0x05, 0x07, 0x0a, 0x0f,</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                             0x14, 0x20, 0x29, 0x39, 0x51, 0x72, 0xa1, 0xff};</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;  uint8_t tmsPeriod[0x40] = {</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;      0x00, 0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19,</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;      0x1A, 0x1B, 0x1C, 0x1D, 0x1E, 0x1F, 0x20, 0x21, 0x22, 0x23, 0x24,</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;      0x25, 0x26, 0x27, 0x28, 0x29, 0x2A, 0x2B, 0x2D, 0x2F, 0x31, 0x33,</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;      0x35, 0x36, 0x39, 0x3B, 0x3D, 0x3F, 0x42, 0x45, 0x47, 0x49, 0x4D,</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;      0x4F, 0x51, 0x55, 0x57, 0x5C, 0x5F, 0x63, 0x66, 0x6A, 0x6E, 0x73,</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;      0x77, 0x7B, 0x80, 0x85, 0x8A, 0x8F, 0x95, 0x9A, 0xA0};</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;  uint16_t tmsK1[0x20] = {</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;      0x82C0, 0x8380, 0x83C0, 0x8440, 0x84C0, 0x8540, 0x8600, 0x8780,</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;      0x8880, 0x8980, 0x8AC0, 0x8C00, 0x8D40, 0x8F00, 0x90C0, 0x92C0,</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;      0x9900, 0xA140, 0xAB80, 0xB840, 0xC740, 0xD8C0, 0xEBC0, 0x0000,</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;      0x1440, 0x2740, 0x38C0, 0x47C0, 0x5480, 0x5EC0, 0x6700, 0x6D40};</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;  uint16_t tmsK2[0x20] = {</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;      0xAE00, 0xB480, 0xBB80, 0xC340, 0xCB80, 0xD440, 0xDDC0, 0xE780,</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;      0xF180, 0xFBC0, 0x0600, 0x1040, 0x1A40, 0x2400, 0x2D40, 0x3600,</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;      0x3E40, 0x45C0, 0x4CC0, 0x5300, 0x5880, 0x5DC0, 0x6240, 0x6640,</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;      0x69C0, 0x6CC0, 0x6F80, 0x71C0, 0x73C0, 0x7580, 0x7700, 0x7E80};</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;  uint8_t tmsK3[0x10] = {0x92, 0x9F, 0xAD, 0xBA, 0xC8, 0xD5, 0xE3, 0xF0,</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                         0xFE, 0x0B, 0x19, 0x26, 0x34, 0x41, 0x4F, 0x5C};</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;  uint8_t tmsK4[0x10] = {0xAE, 0xBC, 0xCA, 0xD8, 0xE6, 0xF4, 0x01, 0x0F,</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;                         0x1D, 0x2B, 0x39, 0x47, 0x55, 0x63, 0x71, 0x7E};</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;  uint8_t tmsK5[0x10] = {0xAE, 0xBA, 0xC5, 0xD1, 0xDD, 0xE8, 0xF4, 0xFF,</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;                         0x0B, 0x17, 0x22, 0x2E, 0x39, 0x45, 0x51, 0x5C};</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;  uint8_t tmsK6[0x10] = {0xC0, 0xCB, 0xD6, 0xE1, 0xEC, 0xF7, 0x03, 0x0E,</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;                         0x19, 0x24, 0x2F, 0x3A, 0x45, 0x50, 0x5B, 0x66};</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;  uint8_t tmsK7[0x10] = {0xB3, 0xBF, 0xCB, 0xD7, 0xE3, 0xEF, 0xFB, 0x07,</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;                         0x13, 0x1F, 0x2B, 0x37, 0x43, 0x4F, 0x5A, 0x66};</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;  uint8_t tmsK8[0x08] = {0xC0, 0xD8, 0xF0, 0x07, 0x1F, 0x37, 0x4F, 0x66};</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;  uint8_t tmsK9[0x08] = {0xC0, 0xD4, 0xE8, 0xFC, 0x10, 0x25, 0x39, 0x4D};</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;  uint8_t tmsK10[0x08] = {0xCD, 0xDF, 0xF1, 0x04, 0x16, 0x20, 0x3B, 0x4D};</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;  uint8_t chirp[CHIRP_SIZE] = {</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;      0x00, 0x2a, 0xd4, 0x32, 0xb2, 0x12, 0x25, 0x14, 0x02, 0xe1, 0xc5,</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;      0x02, 0x5f, 0x5a, 0x05, 0x0f, 0x26, 0xfc, 0xa5, 0xa5, 0xd6, 0xdd,</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;      0xdc, 0xfc, 0x25, 0x2b, 0x22, 0x21, 0x0f, 0xff, 0xf8, 0xee, 0xed,</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;      0xef, 0xf7, 0xf6, 0xfa, 0x00, 0x03, 0x02, 0x01};</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;  int16_t nextSample = 0;</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;  uint8_t periodCounter = 0;</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;  int16_t x[10] = {0};</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160; </div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;  <span class="keywordtype">void</span> wait() { <span class="keywordflow">while</span> (process()); }</div>
+<div class="line"><a name="l00240"></a><span class="lineno"><a class="line" href="classTalkiePCM.html#a1abd922b1e376628825d6c66193ea04c">  240</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classTalkiePCM.html#a1abd922b1e376628825d6c66193ea04c">setOutput</a>(Print&amp; out) { p_print = &amp;out; }</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160; </div>
+<div class="line"><a name="l00244"></a><span class="lineno"><a class="line" href="classTalkiePCM.html#a545fb0d7989081e7b60ff09280406b5c">  244</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classTalkiePCM.html#a545fb0d7989081e7b60ff09280406b5c">setDataCallback</a>(<span class="keywordtype">void</span> (*cb)(int16_t* data, <span class="keywordtype">int</span> len)) {</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    data_callback = cb;</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;  }</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160; </div>
+<div class="line"><a name="l00250"></a><span class="lineno"><a class="line" href="classTalkiePCM.html#ab746c5cbb3cdb78e8a0c685f447567c8">  250</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classTalkiePCM.html#ab746c5cbb3cdb78e8a0c685f447567c8">setChannels</a>(uint16_t ch) { channels = ch; }</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160; </div>
+<div class="line"><a name="l00254"></a><span class="lineno"><a class="line" href="classTalkiePCM.html#af1af6ade1b0597726389bdfb7498ba88">  254</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classTalkiePCM.html#af1af6ade1b0597726389bdfb7498ba88">setVolume</a>(<span class="keywordtype">float</span> vol) { volume = vol; }</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160; </div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160; <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;<span class="preprocessor">#ifdef ARDUINO</span></div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;  Print* p_print = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;  uint16_t channels = 1;</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;  <span class="keywordtype">bool</span> isOutputText = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;  <span class="keyword">const</span> uint8_t* ptrAddr = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;  uint8_t ptrBit;</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;  uint8_t synthPeriod;</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;  int16_t synthK1, synthK2;</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;  int8_t synthK3, synthK4, synthK5, synthK6, synthK7, synthK8, synthK9,</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;      synthK10;</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;  <span class="keywordtype">float</span> volume = 1.0f;</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;  void (*data_callback)(int16_t* data, <span class="keywordtype">int</span> len) = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160; </div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;  uint8_t tmsEnergy[0x10] = {0x00, 0x02, 0x03, 0x04, 0x05, 0x07, 0x0a, 0x0f,</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                             0x14, 0x20, 0x29, 0x39, 0x51, 0x72, 0xa1, 0xff};</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;  uint8_t tmsPeriod[0x40] = {</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;      0x00, 0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19,</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;      0x1A, 0x1B, 0x1C, 0x1D, 0x1E, 0x1F, 0x20, 0x21, 0x22, 0x23, 0x24,</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;      0x25, 0x26, 0x27, 0x28, 0x29, 0x2A, 0x2B, 0x2D, 0x2F, 0x31, 0x33,</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;      0x35, 0x36, 0x39, 0x3B, 0x3D, 0x3F, 0x42, 0x45, 0x47, 0x49, 0x4D,</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;      0x4F, 0x51, 0x55, 0x57, 0x5C, 0x5F, 0x63, 0x66, 0x6A, 0x6E, 0x73,</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;      0x77, 0x7B, 0x80, 0x85, 0x8A, 0x8F, 0x95, 0x9A, 0xA0};</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;  uint16_t tmsK1[0x20] = {</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;      0x82C0, 0x8380, 0x83C0, 0x8440, 0x84C0, 0x8540, 0x8600, 0x8780,</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;      0x8880, 0x8980, 0x8AC0, 0x8C00, 0x8D40, 0x8F00, 0x90C0, 0x92C0,</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;      0x9900, 0xA140, 0xAB80, 0xB840, 0xC740, 0xD8C0, 0xEBC0, 0x0000,</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;      0x1440, 0x2740, 0x38C0, 0x47C0, 0x5480, 0x5EC0, 0x6700, 0x6D40};</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;  uint16_t tmsK2[0x20] = {</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;      0xAE00, 0xB480, 0xBB80, 0xC340, 0xCB80, 0xD440, 0xDDC0, 0xE780,</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;      0xF180, 0xFBC0, 0x0600, 0x1040, 0x1A40, 0x2400, 0x2D40, 0x3600,</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;      0x3E40, 0x45C0, 0x4CC0, 0x5300, 0x5880, 0x5DC0, 0x6240, 0x6640,</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;      0x69C0, 0x6CC0, 0x6F80, 0x71C0, 0x73C0, 0x7580, 0x7700, 0x7E80};</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;  uint8_t tmsK3[0x10] = {0x92, 0x9F, 0xAD, 0xBA, 0xC8, 0xD5, 0xE3, 0xF0,</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                         0xFE, 0x0B, 0x19, 0x26, 0x34, 0x41, 0x4F, 0x5C};</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;  uint8_t tmsK4[0x10] = {0xAE, 0xBC, 0xCA, 0xD8, 0xE6, 0xF4, 0x01, 0x0F,</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                         0x1D, 0x2B, 0x39, 0x47, 0x55, 0x63, 0x71, 0x7E};</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;  uint8_t tmsK5[0x10] = {0xAE, 0xBA, 0xC5, 0xD1, 0xDD, 0xE8, 0xF4, 0xFF,</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                         0x0B, 0x17, 0x22, 0x2E, 0x39, 0x45, 0x51, 0x5C};</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;  uint8_t tmsK6[0x10] = {0xC0, 0xCB, 0xD6, 0xE1, 0xEC, 0xF7, 0x03, 0x0E,</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;                         0x19, 0x24, 0x2F, 0x3A, 0x45, 0x50, 0x5B, 0x66};</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;  uint8_t tmsK7[0x10] = {0xB3, 0xBF, 0xCB, 0xD7, 0xE3, 0xEF, 0xFB, 0x07,</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                         0x13, 0x1F, 0x2B, 0x37, 0x43, 0x4F, 0x5A, 0x66};</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;  uint8_t tmsK8[0x08] = {0xC0, 0xD8, 0xF0, 0x07, 0x1F, 0x37, 0x4F, 0x66};</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;  uint8_t tmsK9[0x08] = {0xC0, 0xD4, 0xE8, 0xFC, 0x10, 0x25, 0x39, 0x4D};</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;  uint8_t tmsK10[0x08] = {0xCD, 0xDF, 0xF1, 0x04, 0x16, 0x20, 0x3B, 0x4D};</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;  uint8_t chirp[CHIRP_SIZE] = {</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;      0x00, 0x2a, 0xd4, 0x32, 0xb2, 0x12, 0x25, 0x14, 0x02, 0xe1, 0xc5,</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;      0x02, 0x5f, 0x5a, 0x05, 0x0f, 0x26, 0xfc, 0xa5, 0xa5, 0xd6, 0xdd,</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;      0xdc, 0xfc, 0x25, 0x2b, 0x22, 0x21, 0x0f, 0xff, 0xf8, 0xee, 0xed,</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;      0xef, 0xf7, 0xf6, 0xfa, 0x00, 0x03, 0x02, 0x01};</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;  int16_t nextSample = 0;</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;  uint8_t periodCounter = 0;</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;  int16_t x[10] = {0};</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160; </div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;  <span class="keywordtype">void</span> wait() { calculateSamples(); }</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160; </div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;  <span class="keywordtype">void</span> setPtr(<span class="keyword">const</span> uint8_t* addr) {</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    ptrAddr = addr;</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    ptrBit = 0;</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;  }</div>
 <div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160; </div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;  <span class="keywordtype">void</span> setPtr(<span class="keyword">const</span> uint8_t* addr) {</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    ptrAddr = addr;</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    ptrBit = 0;</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;  }</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160; </div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;  <span class="comment">// The ROMs used with the TI speech were serial, not byte wide.</span></div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;  <span class="comment">// Here&#39;s a handy routine to flip ROM data which is usually reversed.</span></div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;  uint8_t rev(uint8_t a) {</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    <span class="comment">// 76543210</span></div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    a = (a &gt;&gt; 4) | (a &lt;&lt; 4);  <span class="comment">// Swap in groups of 4</span></div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    <span class="comment">// 32107654</span></div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    a = ((a &amp; 0xcc) &gt;&gt; 2) | ((a &amp; 0x33) &lt;&lt; 2);  <span class="comment">// Swap in groups of 2</span></div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    <span class="comment">// 10325476</span></div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    a = ((a &amp; 0xaa) &gt;&gt; 1) | ((a &amp; 0x55) &lt;&lt; 1);  <span class="comment">// Swap bit pairs</span></div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    <span class="comment">// 01234567</span></div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    <span class="keywordflow">return</span> a;</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;  }</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160; </div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;  uint8_t getBits(uint8_t bits) {</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    <span class="comment">// prevent NPE</span></div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    <span class="keywordflow">if</span> (ptrAddr==<span class="keyword">nullptr</span>) <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    uint8_t value;</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    uint16_t data;</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    data = rev(*(ptrAddr)) &lt;&lt; 8;</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    <span class="keywordflow">if</span> (ptrBit + bits &gt; 8) {</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;      data |= rev(*(ptrAddr + 1));</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    }</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    data &lt;&lt;= ptrBit;</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    value = data &gt;&gt; (16 - bits);</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;    ptrBit += bits;</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;    <span class="keywordflow">if</span> (ptrBit &gt;= 8) {</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;      ptrBit -= 8;</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;      ptrAddr++;</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;    }</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;    <span class="keywordflow">return</span> value;</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;  }</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160; </div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;  <span class="keywordtype">void</span> say1(<span class="keyword">const</span> uint8_t* addr) {</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;    uint8_t energy = 0;</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;    setPtr(addr);</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;  }</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160; </div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;  <span class="keywordtype">int</span> clip(<span class="keywordtype">int</span> value, <span class="keywordtype">int</span> min, <span class="keywordtype">int</span> max) {</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;    <span class="keywordflow">if</span> (value &lt; min) <span class="keywordflow">return</span> min;</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;    <span class="keywordflow">if</span> (value &gt; max) <span class="keywordflow">return</span> max;</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;    <span class="keywordflow">return</span> value;</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;  }</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160; </div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;  <span class="keywordtype">void</span> writeSample(int16_t sample) {</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;    <span class="comment">// scale to 16 bits;</span></div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;    int16_t outSample;</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;    <span class="keywordflow">if</span> (volume == 1.0f) </div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;      outSample = sample; <span class="comment">//clip(static_cast&lt;int&gt;(sample) &lt;&lt; 6, -32768, 32767);</span></div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;    <span class="keywordflow">else</span> </div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;      outSample = clip(volume*sample, -32768, 32767); <span class="comment">//clip(volume * (static_cast&lt;int&gt;(sample) &lt;&lt; 6), -32768, 32767);</span></div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160; </div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;    <span class="comment">// provide data via callback</span></div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;    <span class="keywordflow">if</span> (data_callback){</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;      int16_t out[channels] = {0};</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j=0;j&lt;channels;j++) out[j]=outSample;</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;      data_callback(out, channels);</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;    }</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160; </div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;<span class="preprocessor">#ifdef ARDUINO</span></div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;    <span class="comment">// provide data to Arduino Print</span></div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    <span class="keywordflow">if</span> (p_print) {;</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;      <span class="keywordflow">if</span> (isOutputText) {</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; channels; j++) {</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;          <span class="keywordflow">if</span> (j &gt; 0) p_print-&gt;print(<span class="stringliteral">&quot;, &quot;</span>);</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;          p_print-&gt;print(outSample);</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;        }</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;        p_print-&gt;println();</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;      } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;        int16_t out[channels] = {0};</div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j=0;j&lt;channels;j++) out[j] = outSample;</div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;        p_print-&gt;write((uint8_t*)&amp;(out[0]), <span class="keyword">sizeof</span>(out));</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;      }</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;    }</div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;  }</div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160; </div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;  <span class="keywordtype">bool</span> process() {</div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;    int16_t u[11] = {0};</div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160; </div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;    <span class="keywordtype">bool</span> isActive = calculateSample();</div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160; </div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;  <span class="comment">// The ROMs used with the TI speech were serial, not byte wide.</span></div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;  <span class="comment">// Here&#39;s a handy routine to flip ROM data which is usually reversed.</span></div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;  uint8_t rev(uint8_t a) {</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    <span class="comment">// 76543210</span></div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    a = (a &gt;&gt; 4) | (a &lt;&lt; 4);  <span class="comment">// Swap in groups of 4</span></div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    <span class="comment">// 32107654</span></div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    a = ((a &amp; 0xcc) &gt;&gt; 2) | ((a &amp; 0x33) &lt;&lt; 2);  <span class="comment">// Swap in groups of 2</span></div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    <span class="comment">// 10325476</span></div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    a = ((a &amp; 0xaa) &gt;&gt; 1) | ((a &amp; 0x55) &lt;&lt; 1);  <span class="comment">// Swap bit pairs</span></div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    <span class="comment">// 01234567</span></div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    <span class="keywordflow">return</span> a;</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;  }</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160; </div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;  uint8_t getBits(uint8_t bits) {</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    <span class="comment">// prevent NPE</span></div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    <span class="keywordflow">if</span> (ptrAddr == <span class="keyword">nullptr</span>) <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    uint8_t value;</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    uint16_t data;</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;    data = rev(*(ptrAddr)) &lt;&lt; 8;</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    <span class="keywordflow">if</span> (ptrBit + bits &gt; 8) {</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;      data |= rev(*(ptrAddr + 1));</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    }</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    data &lt;&lt;= ptrBit;</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    value = data &gt;&gt; (16 - bits);</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    ptrBit += bits;</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;    <span class="keywordflow">if</span> (ptrBit &gt;= 8) {</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;      ptrBit -= 8;</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;      ptrAddr++;</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    }</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;    <span class="keywordflow">return</span> value;</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;  }</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160; </div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;  <span class="keywordtype">int</span> clip(<span class="keywordtype">int</span> value, <span class="keywordtype">int</span> min, <span class="keywordtype">int</span> max) {</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;    <span class="keywordflow">if</span> (value &lt; min) <span class="keywordflow">return</span> min;</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;    <span class="keywordflow">if</span> (value &gt; max) <span class="keywordflow">return</span> max;</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;    <span class="keywordflow">return</span> value;</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;  }</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160; </div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;  <span class="keywordtype">void</span> writeSample(int16_t sample) {</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;    <span class="comment">// scale to 16 bits;</span></div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    int16_t outSample;</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    <span class="keywordflow">if</span> (volume == 1.0f)</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;      outSample = clip(<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(sample) &lt;&lt; 6, -32768, 32767);</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;      outSample = clip(volume * (<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(sample) &lt;&lt; 6), -32768, 32767);</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160; </div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;    <span class="comment">// provide data via callback</span></div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;    <span class="keywordflow">if</span> (data_callback) {</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;      int16_t out[channels] = {0};</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; channels; j++) out[j] = outSample;</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;      data_callback(out, channels);</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;    }</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160; </div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;<span class="preprocessor">#ifdef ARDUINO</span></div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;    <span class="comment">// provide data to Arduino Print</span></div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;    <span class="keywordflow">if</span> (p_print) {</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;      ;</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;      <span class="keywordflow">if</span> (isOutputText) {</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; channels; j++) {</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;          <span class="keywordflow">if</span> (j &gt; 0) p_print-&gt;print(<span class="stringliteral">&quot;, &quot;</span>);</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;          p_print-&gt;print(outSample);</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;        }</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;        p_print-&gt;println();</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;      } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;        int16_t out[channels] = {0};</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; channels; j++) out[j] = outSample;</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;        p_print-&gt;write((uint8_t*)&amp;(out[0]), <span class="keyword">sizeof</span>(out));</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;      }</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    }</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;  }</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160; </div>
+<div class="line"><a name="l00401"></a><span class="lineno"><a class="line" href="classTalkiePCM.html#a087ac706772c36afc830df53aea3bb1f">  401</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classTalkiePCM.html#a087ac706772c36afc830df53aea3bb1f">processEnergy</a>(uint16_t synthEnergy) {</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;    int16_t u[11] = {0};</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160; </div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;    <span class="comment">// original logic: update pwm</span></div>
 <div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;    writeSample(nextSample);</div>
 <div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160; </div>
 <div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;    <span class="keywordflow">if</span> (synthPeriod) {</div>
@@ -507,66 +495,69 @@ $(function() {
 <div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160; </div>
 <div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;    <span class="comment">// nextPwm = (u[0] &gt;&gt; 2) + 0x80;</span></div>
 <div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;    nextSample = u[0];</div>
-<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160; </div>
-<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;    <span class="keywordflow">return</span> isActive;</div>
-<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;  }</div>
-<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160; </div>
-<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;  <span class="keywordtype">bool</span> calculateSample() {</div>
-<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;    uint8_t repeat;</div>
-<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;    uint8_t energy;</div>
-<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160; </div>
-<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;    <span class="comment">// Read speech data, processing the variable size frames.</span></div>
-<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;    energy = getBits(4);</div>
-<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;    <span class="keywordflow">if</span> (energy == 0) {</div>
-<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;      <span class="comment">// Energy = 0: rest frame</span></div>
-<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;      synthEnergy = 0;</div>
-<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (energy == 0xf) {</div>
-<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;      <span class="comment">// Energy = 15: stop frame. Silence the synthesiser.</span></div>
-<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;      synthEnergy = 0;</div>
-<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;      synthK1 = 0;</div>
-<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;      synthK2 = 0;</div>
-<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;      synthK3 = 0;</div>
-<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;      synthK4 = 0;</div>
-<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;      synthK5 = 0;</div>
-<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;      synthK6 = 0;</div>
-<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;      synthK7 = 0;</div>
-<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;      synthK8 = 0;</div>
-<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;      synthK9 = 0;</div>
-<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;      synthK10 = 0;</div>
-<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;      synthEnergy = tmsEnergy[energy];</div>
-<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;      repeat = getBits(1);</div>
-<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;      synthPeriod = tmsPeriod[getBits(6)];</div>
-<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;      <span class="comment">// A repeat frame uses the last coefficients</span></div>
-<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;      <span class="keywordflow">if</span> (!repeat) {</div>
-<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;        <span class="comment">// All frames use the first 4 coefficients</span></div>
-<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;        synthK1 = tmsK1[getBits(5)];</div>
-<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;        synthK2 = tmsK2[getBits(5)];</div>
-<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;        synthK3 = tmsK3[getBits(4)];</div>
-<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;        synthK4 = tmsK4[getBits(4)];</div>
-<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;        <span class="keywordflow">if</span> (synthPeriod) {</div>
-<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;          <span class="comment">// Voiced frames use 6 extra coefficients.</span></div>
-<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;          synthK5 = tmsK5[getBits(4)];</div>
-<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;          synthK6 = tmsK6[getBits(4)];</div>
-<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;          synthK7 = tmsK7[getBits(4)];</div>
-<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;          synthK8 = tmsK8[getBits(3)];</div>
-<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;          synthK9 = tmsK9[getBits(3)];</div>
-<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;          synthK10 = tmsK10[getBits(3)];</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;  }</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160; </div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;  <span class="keywordtype">void</span> calculateSamples() {</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;    uint8_t energy = 0;</div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;    uint16_t synthEnergy = 0;</div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160; </div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;    <span class="keywordflow">do</span> {</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;      <span class="comment">// Read speech data, processing the variable size frames.</span></div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;      energy = getBits(4);</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;      <span class="keywordflow">if</span> (energy == 0) {</div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;        <span class="comment">// Energy = 0: rest frame</span></div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;        synthEnergy = 0;</div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;      } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (energy == 0xf) {</div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;        <span class="comment">// Energy = 15: stop frame. Silence the synthesiser.</span></div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;        synthEnergy = 0;</div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;        synthK1 = 0;</div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;        synthK2 = 0;</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;        synthK3 = 0;</div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;        synthK4 = 0;</div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;        synthK5 = 0;</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;        synthK6 = 0;</div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;        synthK7 = 0;</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;        synthK8 = 0;</div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;        synthK9 = 0;</div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;        synthK10 = 0;</div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;      } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;        synthEnergy = tmsEnergy[energy];</div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;        <span class="keywordtype">bool</span> repeat = getBits(1);</div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;        synthPeriod = tmsPeriod[getBits(6)];</div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;        <span class="comment">// A repeat frame uses the last coefficients</span></div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;        <span class="keywordflow">if</span> (!repeat) {</div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;          <span class="comment">// All frames use the first 4 coefficients</span></div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;          synthK1 = tmsK1[getBits(5)];</div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;          synthK2 = tmsK2[getBits(5)];</div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;          synthK3 = tmsK3[getBits(4)];</div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;          synthK4 = tmsK4[getBits(4)];</div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;          <span class="keywordflow">if</span> (synthPeriod) {</div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;            <span class="comment">// Voiced frames use 6 extra coefficients.</span></div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;            synthK5 = tmsK5[getBits(4)];</div>
+<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;            synthK6 = tmsK6[getBits(4)];</div>
+<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;            synthK7 = tmsK7[getBits(4)];</div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;            synthK8 = tmsK8[getBits(3)];</div>
+<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;            synthK9 = tmsK9[getBits(3)];</div>
+<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;            synthK10 = tmsK10[getBits(3)];</div>
+<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;          }</div>
 <div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;        }</div>
 <div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;      }</div>
-<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;    }</div>
-<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;    <span class="keywordflow">return</span> energy != 0xf;</div>
-<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;  }</div>
-<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;};</div>
+<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;      <span class="comment">// original logic: delay 25 ms (=40 hz) -&gt; 8000 hz / 40 hz = 200 cycles</span></div>
+<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j=0;j&lt;200;j++)</div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;        <a class="code" href="classTalkiePCM.html#a087ac706772c36afc830df53aea3bb1f">processEnergy</a>(synthEnergy);</div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;    } <span class="keywordflow">while</span> (energy != 0xf);</div>
+<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;  }</div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;};</div>
 <div class="ttc" id="aclassTalkiePCM_html"><div class="ttname"><a href="classTalkiePCM.html">TalkiePCM</a></div><div class="ttdoc">Talkie is a software implementation of the Texas Instruments speech synthesis architecture (Linear Pr...</div><div class="ttdef"><b>Definition:</b> TalkiePCM.h:25</div></div>
+<div class="ttc" id="aclassTalkiePCM_html_a087ac706772c36afc830df53aea3bb1f"><div class="ttname"><a href="classTalkiePCM.html#a087ac706772c36afc830df53aea3bb1f">TalkiePCM::processEnergy</a></div><div class="ttdeci">void processEnergy(uint16_t synthEnergy)</div><div class="ttdef"><b>Definition:</b> TalkiePCM.h:401</div></div>
 <div class="ttc" id="aclassTalkiePCM_html_a1abd922b1e376628825d6c66193ea04c"><div class="ttname"><a href="classTalkiePCM.html#a1abd922b1e376628825d6c66193ea04c">TalkiePCM::setOutput</a></div><div class="ttdeci">void setOutput(Print &amp;out)</div><div class="ttdoc">Defines the Arduino data target.</div><div class="ttdef"><b>Definition:</b> TalkiePCM.h:240</div></div>
 <div class="ttc" id="aclassTalkiePCM_html_a2c161d46032df11897912ea7aa09a3b5"><div class="ttname"><a href="classTalkiePCM.html#a2c161d46032df11897912ea7aa09a3b5">TalkiePCM::silence</a></div><div class="ttdeci">void silence(uint16_t ms)</div><div class="ttdoc">outputs silence for the indicated milliseconds</div><div class="ttdef"><b>Definition:</b> TalkiePCM.h:44</div></div>
-<div class="ttc" id="aclassTalkiePCM_html_a545fb0d7989081e7b60ff09280406b5c"><div class="ttname"><a href="classTalkiePCM.html#a545fb0d7989081e7b60ff09280406b5c">TalkiePCM::setDataCallback</a></div><div class="ttdeci">void setDataCallback(void(*cb)(int16_t *data, int len))</div><div class="ttdoc">Defines the data callback that receives the generated samples.</div><div class="ttdef"><b>Definition:</b> TalkiePCM.h:246</div></div>
+<div class="ttc" id="aclassTalkiePCM_html_a545fb0d7989081e7b60ff09280406b5c"><div class="ttname"><a href="classTalkiePCM.html#a545fb0d7989081e7b60ff09280406b5c">TalkiePCM::setDataCallback</a></div><div class="ttdeci">void setDataCallback(void(*cb)(int16_t *data, int len))</div><div class="ttdoc">Defines the data callback that receives the generated samples.</div><div class="ttdef"><b>Definition:</b> TalkiePCM.h:244</div></div>
 <div class="ttc" id="aclassTalkiePCM_html_a8b8f0916e442d0fee466cc7d34c1dde6"><div class="ttname"><a href="classTalkiePCM.html#a8b8f0916e442d0fee466cc7d34c1dde6">TalkiePCM::setOutputAsText</a></div><div class="ttdeci">void setOutputAsText(bool flag)</div><div class="ttdoc">converts samples to csv string format</div><div class="ttdef"><b>Definition:</b> TalkiePCM.h:35</div></div>
 <div class="ttc" id="aclassTalkiePCM_html_a91abcac841596bc8015a93f3d30f93ff"><div class="ttname"><a href="classTalkiePCM.html#a91abcac841596bc8015a93f3d30f93ff">TalkiePCM::say</a></div><div class="ttdeci">void say(const uint8_t *address)</div><div class="ttdoc">converts the provided word into samples</div><div class="ttdef"><b>Definition:</b> TalkiePCM.h:38</div></div>
-<div class="ttc" id="aclassTalkiePCM_html_ab746c5cbb3cdb78e8a0c685f447567c8"><div class="ttname"><a href="classTalkiePCM.html#ab746c5cbb3cdb78e8a0c685f447567c8">TalkiePCM::setChannels</a></div><div class="ttdeci">void setChannels(uint16_t ch)</div><div class="ttdoc">Defines the number of generated output channels (2=stereo). Default is 1 = mono.</div><div class="ttdef"><b>Definition:</b> TalkiePCM.h:251</div></div>
+<div class="ttc" id="aclassTalkiePCM_html_ab746c5cbb3cdb78e8a0c685f447567c8"><div class="ttname"><a href="classTalkiePCM.html#ab746c5cbb3cdb78e8a0c685f447567c8">TalkiePCM::setChannels</a></div><div class="ttdeci">void setChannels(uint16_t ch)</div><div class="ttdef"><b>Definition:</b> TalkiePCM.h:250</div></div>
 <div class="ttc" id="aclassTalkiePCM_html_ae657496955b354ad563fc5f62cc29bc5"><div class="ttname"><a href="classTalkiePCM.html#ae657496955b354ad563fc5f62cc29bc5">TalkiePCM::sayNumber</a></div><div class="ttdeci">void sayNumber(long aNumber)</div><div class="ttdoc">say any number between -999,999 and 999,999</div><div class="ttdef"><b>Definition:</b> TalkiePCM.h:72</div></div>
-<div class="ttc" id="aclassTalkiePCM_html_af1af6ade1b0597726389bdfb7498ba88"><div class="ttname"><a href="classTalkiePCM.html#af1af6ade1b0597726389bdfb7498ba88">TalkiePCM::setVolume</a></div><div class="ttdeci">void setVolume(float vol)</div><div class="ttdoc">Volume factor: &gt; 1.0f means amplify; &lt; 1.0f means lower volume. Default is 1.0f.</div><div class="ttdef"><b>Definition:</b> TalkiePCM.h:256</div></div>
+<div class="ttc" id="aclassTalkiePCM_html_af1af6ade1b0597726389bdfb7498ba88"><div class="ttname"><a href="classTalkiePCM.html#af1af6ade1b0597726389bdfb7498ba88">TalkiePCM::setVolume</a></div><div class="ttdeci">void setVolume(float vol)</div><div class="ttdef"><b>Definition:</b> TalkiePCM.h:254</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
