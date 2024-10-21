@@ -45,7 +45,7 @@ You can download the library as zip and call include Library -> zip library. Or 
 
 ```
 cd  ~/Documents/Arduino/libraries
-git clone https://github.com/pschatzmann/talkie.git
+git clone https://github.com/pschatzmann/TalkiePCM.git
 ```
 
 I recommend to use git because you can easily update to the latest version just by executing the git pull command in the project folder. If you want to use the library on other patforms, you can find further information in the Wiki.

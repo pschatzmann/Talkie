@@ -36,7 +36,7 @@ class TalkiePCM {
 
   /// converts the provided word into samples
   void say(const uint8_t* address) {
-    say1(address);
+    setPtr(address);
     wait();
   }
 
@@ -236,10 +236,8 @@ class TalkiePCM {
   }
 
 #ifdef ARDUINO
- /// Defines the Arduino data target
-  void setOutput(Print &out){
-    p_print = &out;
-  }
+  /// Defines the Arduino data target
+  void setOutput(Print& out) { p_print = &out; }
 #endif
 
   /// Defines the data callback that receives the generated samples
@@ -247,15 +245,13 @@ class TalkiePCM {
     data_callback = cb;
   }
 
-  /// Defines the number of generated output channels (2=stereo). Default is 1 = mono.
-  void setChannels(uint16_t ch){
-    channels = ch;
-  }
+  /// Defines the number of generated output channels (2=stereo). Default is 1 =
+  /// mono.
+  void setChannels(uint16_t ch) { channels = ch; }
 
-  /// Volume factor: > 1.0f means amplify; < 1.0f means lower volume. Default is 1.0f
-  void setVolume(float vol){
-    volume = vol;
-  }
+  /// Volume factor: > 1.0f means amplify; < 1.0f means lower volume. Default
+  /// is 1.0f
+  void setVolume(float vol) { volume = vol; }
 
  protected:
 #ifdef ARDUINO
@@ -266,7 +262,6 @@ class TalkiePCM {
   const uint8_t* ptrAddr = nullptr;
   uint8_t ptrBit;
   uint8_t synthPeriod;
-  uint16_t synthEnergy;
   int16_t synthK1, synthK2;
   int8_t synthK3, synthK4, synthK5, synthK6, synthK7, synthK8, synthK9,
       synthK10;
@@ -314,7 +309,7 @@ class TalkiePCM {
   uint8_t periodCounter = 0;
   int16_t x[10] = {0};
 
-  void wait() { while (process()); }
+  void wait() { calculateSamples(); }
 
   void setPtr(const uint8_t* addr) {
     ptrAddr = addr;
@@ -336,7 +331,7 @@ class TalkiePCM {
 
   uint8_t getBits(uint8_t bits) {
     // prevent NPE
-    if (ptrAddr==nullptr) return 0;
+    if (ptrAddr == nullptr) return 0;
     uint8_t value;
     uint16_t data;
     data = rev(*(ptrAddr)) << 8;
@@ -353,11 +348,6 @@ class TalkiePCM {
     return value;
   }
 
-  void say1(const uint8_t* addr) {
-    uint8_t energy = 0;
-    setPtr(addr);
-  }
-
   int clip(int value, int min, int max) {
     if (value < min) return min;
     if (value > max) return max;
@@ -367,21 +357,22 @@ class TalkiePCM {
   void writeSample(int16_t sample) {
     // scale to 16 bits;
     int16_t outSample;
-    if (volume == 1.0f) 
-      outSample = sample; //clip(static_cast<int>(sample) << 6, -32768, 32767);
-    else 
-      outSample = clip(volume*sample, -32768, 32767); //clip(volume * (static_cast<int>(sample) << 6), -32768, 32767);
+    if (volume == 1.0f)
+      outSample = clip(static_cast<int>(sample) << 6, -32768, 32767);
+    else
+      outSample = clip(volume * (static_cast<int>(sample) << 6), -32768, 32767);
 
     // provide data via callback
-    if (data_callback){
+    if (data_callback) {
       int16_t out[channels] = {0};
-      for (int j=0;j<channels;j++) out[j]=outSample;
+      for (int j = 0; j < channels; j++) out[j] = outSample;
       data_callback(out, channels);
     }
 
 #ifdef ARDUINO
     // provide data to Arduino Print
-    if (p_print) {;
+    if (p_print) {
+      ;
       if (isOutputText) {
         for (int j = 0; j < channels; j++) {
           if (j > 0) p_print->print(", ");
@@ -390,18 +381,27 @@ class TalkiePCM {
         p_print->println();
       } else {
         int16_t out[channels] = {0};
-        for (int j=0;j<channels;j++) out[j] = outSample;
+        for (int j = 0; j < channels; j++) out[j] = outSample;
         p_print->write((uint8_t*)&(out[0]), sizeof(out));
       }
     }
 #endif
   }
 
-  bool process() {
+  /**
+   * In the original implementation the processEnergy logic was executed with the help
+   * of a timer interrupt.
+   * The say method was generating the sample values in parallel by updating the
+   * synthEnergy value with the logic find in the calculateSamples method.
+   *
+   * We drive the process by calling calculateSample() which itself executes the
+   * process logic.
+   */
+
+  void processEnergy(uint16_t synthEnergy) {
     int16_t u[11] = {0};
 
-    bool isActive = calculateSample();
-
+    // original logic: update pwm
     writeSample(nextSample);
 
     if (synthPeriod) {
@@ -451,54 +451,56 @@ class TalkiePCM {
 
     // nextPwm = (u[0] >> 2) + 0x80;
     nextSample = u[0];
-
-    return isActive;
   }
 
-  bool calculateSample() {
-    uint8_t repeat;
-    uint8_t energy;
+  void calculateSamples() {
+  	uint8_t energy = 0;
+    uint16_t synthEnergy = 0;
 
-    // Read speech data, processing the variable size frames.
-    energy = getBits(4);
-    if (energy == 0) {
-      // Energy = 0: rest frame
-      synthEnergy = 0;
-    } else if (energy == 0xf) {
-      // Energy = 15: stop frame. Silence the synthesiser.
-      synthEnergy = 0;
-      synthK1 = 0;
-      synthK2 = 0;
-      synthK3 = 0;
-      synthK4 = 0;
-      synthK5 = 0;
-      synthK6 = 0;
-      synthK7 = 0;
-      synthK8 = 0;
-      synthK9 = 0;
-      synthK10 = 0;
-    } else {
-      synthEnergy = tmsEnergy[energy];
-      repeat = getBits(1);
-      synthPeriod = tmsPeriod[getBits(6)];
-      // A repeat frame uses the last coefficients
-      if (!repeat) {
-        // All frames use the first 4 coefficients
-        synthK1 = tmsK1[getBits(5)];
-        synthK2 = tmsK2[getBits(5)];
-        synthK3 = tmsK3[getBits(4)];
-        synthK4 = tmsK4[getBits(4)];
-        if (synthPeriod) {
-          // Voiced frames use 6 extra coefficients.
-          synthK5 = tmsK5[getBits(4)];
-          synthK6 = tmsK6[getBits(4)];
-          synthK7 = tmsK7[getBits(4)];
-          synthK8 = tmsK8[getBits(3)];
-          synthK9 = tmsK9[getBits(3)];
-          synthK10 = tmsK10[getBits(3)];
+    do {
+      // Read speech data, processing the variable size frames.
+      energy = getBits(4);
+      if (energy == 0) {
+        // Energy = 0: rest frame
+        synthEnergy = 0;
+      } else if (energy == 0xf) {
+        // Energy = 15: stop frame. Silence the synthesiser.
+        synthEnergy = 0;
+        synthK1 = 0;
+        synthK2 = 0;
+        synthK3 = 0;
+        synthK4 = 0;
+        synthK5 = 0;
+        synthK6 = 0;
+        synthK7 = 0;
+        synthK8 = 0;
+        synthK9 = 0;
+        synthK10 = 0;
+      } else {
+        synthEnergy = tmsEnergy[energy];
+        bool repeat = getBits(1);
+        synthPeriod = tmsPeriod[getBits(6)];
+        // A repeat frame uses the last coefficients
+        if (!repeat) {
+          // All frames use the first 4 coefficients
+          synthK1 = tmsK1[getBits(5)];
+          synthK2 = tmsK2[getBits(5)];
+          synthK3 = tmsK3[getBits(4)];
+          synthK4 = tmsK4[getBits(4)];
+          if (synthPeriod) {
+            // Voiced frames use 6 extra coefficients.
+            synthK5 = tmsK5[getBits(4)];
+            synthK6 = tmsK6[getBits(4)];
+            synthK7 = tmsK7[getBits(4)];
+            synthK8 = tmsK8[getBits(3)];
+            synthK9 = tmsK9[getBits(3)];
+            synthK10 = tmsK10[getBits(3)];
+          }
         }
       }
-    }
-    return energy != 0xf;
+      // original logic: delay 25 (=40 hz) -> 8000 hz / 40 hz = 200 cycles
+      for (int j=0;j<200;j++)
+        processEnergy(synthEnergy);
+    } while (energy != 0xf);
   }
 };
