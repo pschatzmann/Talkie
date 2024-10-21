@@ -26,7 +26,7 @@ Talkie comes with over 1000 words of speech data that can be included in your pr
 - [Vocab_US_Acorn](src/Vocab_US_Acorn.h)
 - [Vocab_US_Clock](src/Vocab_US_Clock.h)
 - [Vocab_US_Large](src/Vocab_US_Large.h)
-- [Talkie](Talkie/src/Vocab_US_TI99.h)
+- [Vocab_US_TI99](src/Vocab_US_TI99.h)
 
 ## Output Libraries
 
