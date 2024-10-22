@@ -30,6 +30,8 @@ Talkie comes with over 1000 words of speech data that can be included in your pr
 - [Vocab_US_Large](src/Vocab_US_Large.h)
 - [Vocab_US_TI99](src/Vocab_US_TI99.h)
 
+You can generate your own words with the help of [python_wizzard](https://github.com/ptwz/python_wizard) from ptwz.
+
 ## Output Libraries
 
 You can e.g. write the data directly to Serial, a File or to I2S if your processor is supporting a corresponding API. 
