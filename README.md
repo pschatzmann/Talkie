@@ -36,7 +36,8 @@ You can generate your own words with the help of [python_wizzard](https://github
 
 You can e.g. write the data directly to Serial, a File or to I2S if your processor is supporting a corresponding API. 
 
-I recommend to use it with the [Arduino Audio Tools](https://github.com/pschatzmann/arduino-audio-tools), where you can reprocess the audio data and/or output it via different protocols.
+I recommend to use it with the [Arduino Audio Tools](https://github.com/pschatzmann/arduino-audio-tools), where you can reprocess the audio data and/or output it via different protocols. The original Library was
+using PWM as output. This would correspond with the PWMAudioOutput class. But you can also use AnalogAudioStream to use the internal DAC, I2SStream to output to an exteral DAC or VS1053Stream to output to a VS1053 module attached via SPI. There are many more possibilities, so check out the [Wiki of the Project](https://github.com/pschatzmann/arduino-audio-tools/wiki). 
 
 ## Class Documentaion
 
