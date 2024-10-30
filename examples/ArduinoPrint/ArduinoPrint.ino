@@ -13,7 +13,7 @@
 #include "Vocab_US_Large.h"
 
 const int channels = 2;
-CsvOutput<int32_t> out(Serial, channels);
+CsvOutput<int16_t> out(Serial, channels);
 TalkiePCM voice(out, channels);
 
 void setup() {
