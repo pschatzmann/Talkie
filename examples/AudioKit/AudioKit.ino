@@ -1,5 +1,8 @@
 /***
  * @brief Standard Arduino integration: We use an AudioKit as output device
+ * You need to install:
+ * - https://github.com/pschatzmann/arduino-audio-tools
+ * - https://github.com/pschatzmann/arduino-audio-driver
  * @author Phil Schatzmann
  */
 #include "AudioTools.h"

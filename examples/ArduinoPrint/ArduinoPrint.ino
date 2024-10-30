@@ -3,9 +3,12 @@
 /***
  * @brief Standard Arduino integration: we can just define the output to which the
  * binary data will be written.
+ * You need to install:
+ * - https://github.com/pschatzmann/arduino-audio-tools
+ * - https://github.com/pschatzmann/arduino-audio-driver
  * @author Phil Schatzmann
  */
-#include "AudioTools.h"
+#include "AudioTools.h" // https://github.com/pschatzmann/arduino-audio-tools
 #include "TalkiePCM.h"
 #include "Vocab_US_Large.h"
 
